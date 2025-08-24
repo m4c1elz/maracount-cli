@@ -34,10 +34,8 @@
     "typescript-eslint": "^8.40.0"
   },
   "lint-staged": {
-    "*.{ts,mts,json}": [
-      "prettier --write",
-      "eslint"
-    ]
+    "*.{ts,mts,json}": "prettier --write",
+    "*.{ts,mts}": "eslint"
   },
   "bin": {
     "maracount": "./dist/index.js"

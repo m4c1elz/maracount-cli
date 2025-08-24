@@ -17,12 +17,18 @@ O próximo exemplo lista o placar do Maracount, ordenado por views:
 maracount leaderboard --sort-by views
 ```
 
+O exemplo a seguir mostra o gráfico ao longo do tempo de views/likes do filme de ID 81, iniciando da data 10/03/2023 em UTC:
+
+```bash
+maracount view 81 --graph --from 2023-03-10T15:00:00.000Z
+```
+
 ## Roadmap do projeto
 
 - [x] Listar filmes
 - [x] Listar um filme em específico
 - [x] Listar placar
-- [ ] Gerar gráfico em ASCII com base em registros diários
+- [x] Gerar gráfico em ASCII com base em registros diários
 - [ ] Logar como Admin
 - [ ] Adicionar filmes
 - [ ] Editar filmes existentes

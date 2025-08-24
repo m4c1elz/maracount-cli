@@ -31,18 +31,25 @@ program
     .command('view')
     .description('Ver um filme em específico')
     .argument('<id>', 'ID do filme. Obrigatório.')
+    .option('-c, --chart', 'Gerar um gráfico com os dados ao longo do tempo')
+    .option(
+        '--from [date]',
+        'Data inicial a mostrar os dados. Usada em conjunto com --chart',
+    )
+    .option(
+        '--to [date]',
+        'Data final a mostrar os dados. Usada em conjunto com --chart',
+    )
     .action(viewAction)
 
 program
     .command('leaderboard')
-    .description('Mostrar o placar de filmes do Maracount.')
+    .description('Mostrar o placar de filmes do Maracount')
     .option('-s, --search [query]', 'Pesquisar por um filme')
     .option('-c, --class [class]', 'Pesquisar por uma turma')
     .option(
         "--sort-by ['views' | 'likes]'",
-        `Ordenar por visualizações ou curtidas. 
-        Deve ser 'views' ou 'likes' se especificado. 
-        Valores diferentes serão ignorados.`,
+        `Ordenar por visualizações ou curtidas ('views' ou 'likes')`,
         'likes',
     )
     .action(leaderboardAction)

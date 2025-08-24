@@ -26,7 +26,7 @@ program
 program
     .command('view')
     .description('Ver um filme em específico')
-    .argument('[id]', 'ID do filme. Obrigatório.')
+    .argument('<id>', 'ID do filme. Obrigatório.')
     .action(viewAction)
 
 program

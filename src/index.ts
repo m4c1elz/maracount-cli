@@ -2,6 +2,7 @@
 
 import { Command } from 'commander'
 import { listAction } from './actions/list'
+import { viewAction } from './actions/view'
 
 const program = new Command()
 
@@ -20,5 +21,11 @@ program
         'Pesquisar por filmes de uma turma em específico',
     )
     .action(listAction)
+
+program
+    .command('view')
+    .description('Ver um filme em específico')
+    .argument('[id]', 'ID do filme. Obrigatório.')
+    .action(viewAction)
 
 program.parse()

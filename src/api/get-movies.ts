@@ -1,4 +1,4 @@
-import { BASE_API_URL } from '../constants/api'
+import { http } from '../lib/http'
 
 export type GetMoviesResult = {
     data: GetMoviesResultItem[]
@@ -22,29 +22,13 @@ export async function getMovies(
     search?: string,
     classNumber?: string,
 ): Promise<GetMoviesResult> {
-    const searchParams = new URLSearchParams()
-    searchParams.set('page', page.toString())
+    const { body: movies } = await http.get<GetMoviesResult>('/v2/movies', {
+        searchParams: {
+            page,
+            search,
+            class: classNumber,
+        },
+    })
 
-    if (search) {
-        searchParams.set('search', search)
-    }
-
-    if (classNumber) {
-        searchParams.set('class', classNumber)
-    }
-
-    const url = BASE_API_URL.concat('/v2/movies?').concat(
-        searchParams.toString(),
-    )
-
-    const response = await fetch(url)
-
-    if (!response.ok) {
-        throw new Error('Houve um erro ao procurar os filmes!', {
-            cause: response.statusText,
-        })
-    }
-
-    const movies = (await response.json()) as GetMoviesResult
     return movies
 }

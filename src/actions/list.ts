@@ -13,13 +13,14 @@ type ListOptions = {
 export async function listAction(opts: ListOptions): Promise<void> {
     spinner.start({ text: 'Pegando filmes...' })
 
+    const page = Number(opts.page || '1')
+
     const [result, error] = await tryCatch(
-        getMovies(Number(opts.page || '1'), opts.search, opts.class),
+        getMovies(page, opts.search, opts.class),
     )
 
     if (error) {
-        spinner.error({ text: 'Houve um erro ao pegar os filmes!' })
-        console.log(error.cause)
+        spinner.error({ text: error.message })
         return
     }
 

@@ -1,26 +1,31 @@
 {
   "name": "maracount-cli",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Uma adaptação do Maracount para interfaces CLI.",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "tsc --watch",
     "build": "tsc",
     "format": "prettier --write ./src/**/*.ts ./*.json",
-    "lint": "eslint src/**/*.ts"
+    "lint": "eslint src/**/*.ts",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "Felipe Maciel",
   "license": "ISC",
   "packageManager": "pnpm@10.12.1",
   "dependencies": {
+    "asciichart": "^1.5.25",
     "chalk": "^5.6.0",
     "commander": "^14.0.0",
+    "husky": "^9.1.7",
     "inquirer": "^12.9.3",
+    "lint-staged": "^16.1.5",
     "nanospinner": "^1.2.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.34.0",
+    "@types/asciichart": "^1.5.8",
     "@types/node": "^24.3.0",
     "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.8",
@@ -29,6 +34,10 @@
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.40.0"
+  },
+  "lint-staged": {
+    "*.{ts,mts,json}": "prettier --write",
+    "*.{ts,mts}": "eslint"
   },
   "bin": {
     "maracount": "./dist/index.js"

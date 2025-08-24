@@ -7,14 +7,16 @@ import { tryCatch } from '../lib/try-catch'
 type LeaderboardOptions = {
     search?: string
     class?: string
+    sortBy?: string
 }
 
 export async function leaderboardAction(
     opts?: LeaderboardOptions,
 ): Promise<void> {
     spinner.start({ text: 'Pegando placar...' })
+
     const [leaderboard, error] = await tryCatch(
-        getLeaderboard(opts?.search, opts?.class),
+        getLeaderboard(opts?.search, opts?.class, opts?.sortBy),
     )
 
     if (error) {

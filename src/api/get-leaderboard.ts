@@ -14,12 +14,14 @@ export type GetLeaderboardResultItem = {
 export async function getLeaderboard(
     search?: string,
     classNumber?: string,
+    sortBy?: string,
 ): Promise<GetLeaderboardResult> {
     const { body: leaderboard } = await http.get<GetLeaderboardResult>(
         '/v2/movies/leaderboard',
         {
             searchParams: {
                 search,
+                sortBy,
                 class: classNumber,
             },
         },

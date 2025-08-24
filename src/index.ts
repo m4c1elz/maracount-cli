@@ -34,6 +34,13 @@ program
     .description('Mostrar o placar de filmes do Maracount.')
     .option('-s, --search [query]', 'Pesquisar por um filme')
     .option('-c, --class [class]', 'Pesquisar por uma turma')
+    .option(
+        "--sort-by ['views' | 'likes]'",
+        `Ordenar por visualizações ou curtidas. 
+        Deve ser 'views' ou 'likes' se especificado. 
+        Valores diferentes serão ignorados.`,
+        'likes',
+    )
     .action(leaderboardAction)
 
 program.parse()

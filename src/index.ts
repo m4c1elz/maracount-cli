@@ -4,6 +4,8 @@ import { Command } from 'commander'
 import { listAction } from './actions/list'
 import { viewAction } from './actions/view'
 import { leaderboardAction } from './actions/leaderboard'
+import { maracountAsciiLogo } from './constants/ascii'
+import { primaryColorText } from './constants/colors'
 
 const program = new Command()
 
@@ -11,6 +13,8 @@ program
     .name('maracount')
     .description('Use o Maracount na sua interface CLI.')
     .version('0.1.0')
+
+program.addHelpText('before', primaryColorText(maracountAsciiLogo))
 
 program
     .command('list')

@@ -3,6 +3,7 @@
 import { Command } from 'commander'
 import { listAction } from './actions/list'
 import { viewAction } from './actions/view'
+import { leaderboardAction } from './actions/leaderboard'
 
 const program = new Command()
 
@@ -27,5 +28,10 @@ program
     .description('Ver um filme em específico')
     .argument('[id]', 'ID do filme. Obrigatório.')
     .action(viewAction)
+
+program
+    .command('leaderboard')
+    .description('Mostrar o placar de filmes do Maracount.')
+    .action(leaderboardAction)
 
 program.parse()

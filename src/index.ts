@@ -3,6 +3,7 @@
 import { Command } from 'commander'
 import { listAction } from './actions/list'
 import { viewAction } from './actions/view'
+import { leaderboardAction } from './actions/leaderboard'
 
 const program = new Command()
 
@@ -27,5 +28,19 @@ program
     .description('Ver um filme em específico')
     .argument('[id]', 'ID do filme. Obrigatório.')
     .action(viewAction)
+
+program
+    .command('leaderboard')
+    .description('Mostrar o placar de filmes do Maracount.')
+    .option('-s, --search [query]', 'Pesquisar por um filme')
+    .option('-c, --class [class]', 'Pesquisar por uma turma')
+    .option(
+        "--sort-by ['views' | 'likes]'",
+        `Ordenar por visualizações ou curtidas. 
+        Deve ser 'views' ou 'likes' se especificado. 
+        Valores diferentes serão ignorados.`,
+        'likes',
+    )
+    .action(leaderboardAction)
 
 program.parse()

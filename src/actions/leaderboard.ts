@@ -4,9 +4,18 @@ import { primaryColorText, secondaryColorText } from '../constants/colors'
 import { spinner } from '../lib/spinner'
 import { tryCatch } from '../lib/try-catch'
 
-export async function leaderboardAction(): Promise<void> {
+type LeaderboardOptions = {
+    search?: string
+    class?: string
+}
+
+export async function leaderboardAction(
+    opts?: LeaderboardOptions,
+): Promise<void> {
     spinner.start({ text: 'Pegando placar...' })
-    const [leaderboard, error] = await tryCatch(getLeaderboard())
+    const [leaderboard, error] = await tryCatch(
+        getLeaderboard(opts?.search, opts?.class),
+    )
 
     if (error) {
         spinner.error(error.message)

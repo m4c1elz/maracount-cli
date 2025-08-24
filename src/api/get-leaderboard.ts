@@ -11,9 +11,18 @@ export type GetLeaderboardResultItem = {
     position: number
 }
 
-export async function getLeaderboard(): Promise<GetLeaderboardResult> {
+export async function getLeaderboard(
+    search?: string,
+    classNumber?: string,
+): Promise<GetLeaderboardResult> {
     const { body: leaderboard } = await http.get<GetLeaderboardResult>(
         '/v2/movies/leaderboard',
+        {
+            searchParams: {
+                search,
+                class: classNumber,
+            },
+        },
     )
 
     return leaderboard

@@ -32,6 +32,8 @@ program
 program
     .command('leaderboard')
     .description('Mostrar o placar de filmes do Maracount.')
+    .option('-s, --search [query]', 'Pesquisar por um filme')
+    .option('-c, --class [class]', 'Pesquisar por uma turma')
     .action(leaderboardAction)
 
 program.parse()
